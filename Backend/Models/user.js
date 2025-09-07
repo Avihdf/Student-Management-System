@@ -19,7 +19,6 @@ const userSchema = new Schema({
     },
     number: {
         type: String,
-        required: true,
         trim: true,
         match: [/^\d{10}$/, 'Number must be 10 digits']
     },

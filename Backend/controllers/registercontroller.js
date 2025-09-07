@@ -5,6 +5,11 @@ const User = require('../Models/user');
 exports.register = async (req, res) => {
   const { name, number, email, password } = req.body;
 
+  name = name.trim().replace(/\s+/g, ' ');  // collapse multiple spaces
+  email = email.trim().toLowerCase();
+  number = number.trim();
+  password = password.trim();
+
   if (!name || name.length < 2) return res.status(400).json({ message: 'Name must be at least 2 characters' });
   if (!email || !/\S+@\S+\.\S+/.test(email)) return res.status(400).json({ message: 'Invalid email' });
   if (!number || !/^\d{10}$/.test(number)) return res.status(400).json({ message: 'Number must be 10 digits' });

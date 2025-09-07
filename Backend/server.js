@@ -1,6 +1,7 @@
 const dotenv=require('dotenv');
 const path=require('path');
 dotenv.config({ path: path.resolve(__dirname, '.env') });
+
 const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
@@ -8,18 +9,30 @@ const cookieParser = require('cookie-parser');
 
 
 const app=express();
-app.use(cors());
+
+// CORS configuration
+const allowedOrigins = [ 
+  'http://localhost:5173',            // Local dev frontend
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.error(`Blocked CORS request from origin: ${origin}`);
+      callback(new Error('CORS Not Allowed'));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
-
-corsOptions={
-  origin:'*',
-};
-
-
-
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI,{}).then(()=>{
   console.log('Connected to MongoDB');
 }).catch((error)=>{
