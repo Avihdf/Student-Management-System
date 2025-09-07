@@ -128,7 +128,7 @@ const LoginPage = () => {
 
 
   return (
-    <div className="min-h-screen h-full bg-black flex items-center justify-center p-6">
+    <div className=" min-h-screen h-full bg-black flex items-center justify-center px-6 pt-10 pb-6">
 
       <div className="relative w-full max-w-md">
         {/* Main Login Card */}

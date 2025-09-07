@@ -16,8 +16,11 @@ const App = () => {
     <div>
       <Routes>
         {/* <Route path="/" element={<LandingPage />} /> */}
+
         <Route path="/" element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+
+    
 
 
         <Route path="/admin/dashboard" element={<AdminDashboard />} />

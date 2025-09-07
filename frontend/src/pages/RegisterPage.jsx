@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { FaEye, FaEyeSlash, FaLock, FaUser, FaPhone,FaTimes } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaLock, FaUser, FaPhone, FaTimes } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { useEffect } from 'react';
+
 
 const RegisterPage = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const RegisterPage = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    
+
 
     const api_url = import.meta.env.VITE_API_URL;
 
@@ -44,12 +45,12 @@ const RegisterPage = () => {
         </svg>
     );
 
-     useEffect(() => {
-    if (errorMessage) {
-      const timer = setTimeout(() => setErrorMessage(''), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [errorMessage]);
+    useEffect(() => {
+        if (errorMessage) {
+            const timer = setTimeout(() => setErrorMessage(''), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [errorMessage]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -96,9 +97,14 @@ const RegisterPage = () => {
         }
     };
 
+    
+                
 
     return (
         <div className="min-h-screen h-full bg-black flex items-center justify-center p-6">
+            
+            
+
             <div className="relative w-full max-w-md">
                 {/* Main Register Card */}
                 <div className="bg-gray-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700/50 p-8 relative overflow-hidden">
