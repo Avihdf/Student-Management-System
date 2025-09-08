@@ -51,6 +51,7 @@ exports.googleAuth = async (req, res) => {
 
         // Restrict admin login through this condition
         if (user.role == 'admin') {
+            res.clearCookie('admin');
             res.cookie('admin', token, {
                 path: '/',
                 httpOnly: true,
@@ -61,6 +62,7 @@ exports.googleAuth = async (req, res) => {
         }
 
         // For student login
+        res.clearCookie('student');
         res.cookie('student', token, {
             path: '/',
             httpOnly: true,
