@@ -55,7 +55,7 @@ exports.googleAuth = async (req, res) => {
                 path: '/',
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'Strict',
+                sameSite: 'Lax',
             });
             return res.status(200).json({ message: `Welcome Admin! ${user.name}`, role: user.role });
         }
@@ -65,7 +65,7 @@ exports.googleAuth = async (req, res) => {
             path: '/',
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'Strict',
+            sameSite: 'Lax',
         });
         res.status(200).json({ message: `Welcome ${user.name} `, role: user.role });
     }

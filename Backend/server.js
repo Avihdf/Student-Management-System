@@ -43,9 +43,18 @@ mongoose.connect(process.env.MONGO_URI,{}).then(()=>{
 
 const authRoutes=require('./Routes/auth');
 
-
 // Auth API routes for both admin and student
 app.use('/api/auth',authRoutes);
+
+
+const adminDashboardRoutes=require('./Routes/admin/admindashboard');
+
+app.use('/api/admin',adminDashboardRoutes);
+
+
+const studentDashboardRoutes=require('./Routes/student/studentdashboard');
+
+app.use('/api/student',studentDashboardRoutes);
 
 
 
