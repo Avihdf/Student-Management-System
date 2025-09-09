@@ -49,9 +49,9 @@ const StudentSideNavbar = () => {
       `}>
         
         {/* Sidebar Header */}
-        <div className={`px-4 py-5 border-b border-gray-300`}>
+        <div className={`px-4 py-5 `}>
           <h1 className="text-xl font-bold text-blue-600 tracking-wide">
-            Studentend Panel
+            Student Panel
           </h1>
         </div>
 
