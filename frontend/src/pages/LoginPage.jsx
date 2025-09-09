@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { GoogleLogin } from '@react-oauth/google';
@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaLock, FaCheck, FaTimes } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { useEffect } from 'react';
-
+import { useauth } from '../context/AppContext';
 
 
 const LoginPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { admindetails, userdetails } = useauth();
 
 
   const [userType, setUserType] = useState('student');
@@ -21,6 +22,8 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(location.state?.error || '')
   const [message, setMessage] = useState(location.state?.message || '');
+
+
 
   const api_url = import.meta.env.VITE_API_URL
 
@@ -83,9 +86,12 @@ const LoginPage = () => {
 
       // Handle successful login based on user role
       if (role === 'admin') {
+          await admindetails();
         // Redirect to admin dashboard
+
         navigate('/admin/dashboard', { state: { message: response.data.message } });
       } else if (role === 'student') {
+        await userdetails();
         // Redirect to student dashboard
         navigate('/student/dashboard', { state: { message: response.data.message } });
       }
@@ -110,8 +116,10 @@ const LoginPage = () => {
      
 
       if (role === 'admin') {
+        await admindetails();
         navigate('/admin/dashboard', { state: { message } });
       } else if (role === 'student') {
+        await userdetails();
         navigate('/student/dashboard', { state: { message } });
       }
     } catch (err) {
