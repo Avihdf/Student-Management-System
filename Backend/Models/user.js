@@ -47,6 +47,7 @@ const userSchema = new Schema({
         enum: ["student", "admin"],
         default: "student"
     },
+    restricted: { type: Boolean, default: false },
 
 }, { timestamps: true });
 
