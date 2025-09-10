@@ -47,11 +47,19 @@ const authRoutes=require('./Routes/auth');
 app.use('/api/auth',authRoutes);
 
 
+// Admin specific routes with JWT middleware
 const adminDashboardRoutes=require('./Routes/admin/admindashboard');
+const getregisteredstudents=require('./Routes/admin/registeredstudent');
+const addcourseRoutes=require('./Routes/admin/addcourse');
+
 
 app.use('/api/admin',adminDashboardRoutes);
+app.use('/api/admin',getregisteredstudents);
+app.use('/api/admin',addcourseRoutes);
 
 
+
+// Student specific routes with JWT middleware
 const studentDashboardRoutes=require('./Routes/student/studentdashboard');
 
 app.use('/api/student',studentDashboardRoutes);
