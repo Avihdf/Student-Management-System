@@ -51,11 +51,13 @@ app.use('/api/auth',authRoutes);
 const adminDashboardRoutes=require('./Routes/admin/admindashboard');
 const getregisteredstudents=require('./Routes/admin/registeredstudent');
 const addcourseRoutes=require('./Routes/admin/addcourse');
+const courselistRoutes=require('./Routes/admin/courselist');
 
 
 app.use('/api/admin',adminDashboardRoutes);
 app.use('/api/admin',getregisteredstudents);
 app.use('/api/admin',addcourseRoutes);
+app.use('/api/admin',courselistRoutes);
 
 
 
