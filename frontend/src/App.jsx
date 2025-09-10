@@ -14,6 +14,7 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 //Import Student Pages
 import StudentDashboard from './pages/student/StudentDashboard'
 import StudentPage from './pages/student/StudentPage';
+import RegisteredStudentList from './pages/admin/RegisteredStudentlist';
 
 
 
@@ -34,6 +35,7 @@ const App = () => {
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminPage />}>
             <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="registeredstudentslist" element={<RegisteredStudentList />} />
           </Route>
 
 

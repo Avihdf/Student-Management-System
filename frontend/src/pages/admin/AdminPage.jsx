@@ -1,42 +1,23 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
+import AdminSidebar from '../../components/admin/AdminSideNavbar'
 import AdminNavbar from '../../components/admin/AdminNavbar'
-import AdminSidebar from '../../components/admin/AdminSideNavbar';
 
 const AdminPage = () => {
   return (
-    <div className="bg-gray-950 min-h-screen text-white overflow-hidden">
-      {/* Admin Navbar - Fixed at top */}
-      <AdminNavbar />
+    <div className="h-screen bg-gray-950 text-white overflow-hidden">
+      {/* Fixed Top Navbar */}
+      <div className="fixed top-0 left-0 right-0 h-14 z-50">
+        <AdminNavbar />
+      </div>
       
-      {/* Layout Container */}
-      <div className="flex h-screen ">
-        {/* Sidebar Container - Responsive positioning */}
-        <div className="
-          /* Mobile: Hidden by default, shown via sidebar's own toggle */
-          fixed inset-y-0 left-0 z-40
-          /* Tablet and up: Static positioning */
-          lg:static lg:flex-shrink-0
-          /* Ensure it accounts for navbar height */
-          pt-14 lg:pt-0
-        ">
-          <AdminSidebar />
-        </div>
+      {/* Layout Container - Account for fixed navbar */}
+      <div className="flex pt-14 h-screen">
+       
 
-        {/* Main Content Area - Responsive margins */}
-        <main className="
-          flex-1 overflow-y-auto bg-gray-950
-          /* Mobile: Full width (sidebar overlays when open) */
-          w-full
-          /* Large screens: Account for sidebar width */
-          lg:ml-0
-          /* Padding adjustments for different screen sizes */
-          p-3 sm:p-4 lg:p-6
-          /* Ensure proper spacing from top */
-          pt-0
-        ">
-          {/* Content wrapper for better spacing */}
-          <div className="max-w-full">
+        {/* Main Content Area */}
+        <main className="flex-1 overflow-y-auto bg-gray-950">
+          <div className="p-4 sm:p-6 lg:p-8">
             <Outlet />
           </div>
         </main>
